@@ -4,4 +4,4 @@
 
 [Xen安装教程](https://blog.csdn.net/lee_ham/article/details/83472079)
 
-&emsp; 注意：第一步依赖包的安装不全，要进入博客开头的链接中查看。
+&emsp; 注意：第一步依赖包的安装不全，要进入博客开头的链接中查看完整依赖包（否则`./configure`及后续操作会报错）。
