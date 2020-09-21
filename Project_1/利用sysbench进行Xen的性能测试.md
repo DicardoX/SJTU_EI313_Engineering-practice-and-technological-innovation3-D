@@ -18,7 +18,38 @@
 
 ----------------
 
-# Ubuntu环境下Sysbench的安装
+## Ubuntu环境下Sysbench的安装
 
 &emsp; 本次使用的虚拟环境为Ubuntu18.04。
+
+### Sysbench的安装依赖
+
+```
+  sudo apt-get -y install make automake libtool pkg-config libaio-dev vim-common
+```
+
+### Sysbench的安装
+
+```
+  sudo apt-get install sysbench
+```
+
+### 验证sysbench安装是否成功
+
+```
+  dicardo@ubuntu:~$ sysbench --version
+  sysbench 1.0.11
+```
+
+---------------
+
+## 利用sysbench进行Xen的性能测试
+
+
+
+
+
+
+
+
 
