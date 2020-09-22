@@ -57,7 +57,16 @@
   desktop-amd64.iso     6%[>                   ] 185.21M  1.16MB/s    剩余 29m 52s
 ```
 
-&emsp; 若过程中出现“段错误，核心已转储”
+&emsp; 若过程中出现“段错误，核心已转储”，则使用如下命令从中断处继续下载：
+
+```
+  wget -c  https://releases.ubuntu.com/20.04.1/ubuntu-20.04.1-desktop-amd64.iso
+```
+
+&emsp; 直到出现“文件下载已完成；不会进行任何操作“的提示。
+
+
+
 
 
 
