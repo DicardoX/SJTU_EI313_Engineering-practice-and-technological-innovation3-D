@@ -54,7 +54,7 @@
   已发出 HTTP 请求，正在等待回应... 200 OK
   长度： 2785017856 (2.6G) [application/x-iso9660-image]
   正在保存至: “ubuntu-20.04.1-desktop-amd64.iso”
-
+  desktop-amd64.iso     6%[>                   ] 185.21M  1.16MB/s    剩余 29m 52s
 ```
 
 
