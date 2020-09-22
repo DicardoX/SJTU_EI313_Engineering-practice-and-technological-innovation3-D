@@ -38,8 +38,13 @@
     ../configure --target-list=x86_64-softmmu --enable-kvm --enable-debug
   ```
 
+&emsp; 作用分别是：
+
 ```
-  
+  --enable-kvm：编译KVM模块，使QEMU可以使用KVM来访问硬件提供的虚拟化服务
+  --enable-vnc：启用VNC（虚拟网络控制台的缩写）
+  --enable-werror：编译时，将所有warning当作error处理
+  --target-list：选择目标机器的架构。默认是将所有的架构都编译，但指定之后可以更快地编译
 ```
 
 
