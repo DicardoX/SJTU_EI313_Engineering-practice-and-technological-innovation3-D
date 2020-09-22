@@ -16,7 +16,6 @@
   sudo apt-get install librbd-dev
   apt-get install libaio-dev
   apt-get install flex bison
-
 ```
 
 --------------
