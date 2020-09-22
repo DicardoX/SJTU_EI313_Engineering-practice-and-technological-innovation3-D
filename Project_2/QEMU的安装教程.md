@@ -39,6 +39,11 @@
     ../configure --target-list=x86_64-softmmu --enable-kvm --enable-debug
   ```
 
+```
+  
+```
+
+
 - 安装SDL2，[安装教程](https://www.jianshu.com/p/17ff0f40ec08)
 
   ```
