@@ -1,6 +1,6 @@
 # QEMU的使用
 
-[参考blog](http://www.360doc.com/content/17/0531/22/6080914_658855867.shtml)
+[参考链接：使用QEMU创建虚拟机](http://www.360doc.com/content/17/0531/22/6080914_658855867.shtml)
 
 --------
 
