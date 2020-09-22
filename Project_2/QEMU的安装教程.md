@@ -32,7 +32,7 @@
 
 - 进入qemu文件夹，新建一个build文件夹并进入；
 
-- 设置编译选项，完成后发现`SDL support`缺失；
+- 设置编译选项，完成后发现`SDL support`缺失（在一大串输出的中间）；
 
   ```
     ../configure --target-list=x86_64-softmmu --enable-kvm --enable-debug
