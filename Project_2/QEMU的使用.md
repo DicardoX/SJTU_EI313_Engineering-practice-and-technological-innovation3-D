@@ -23,10 +23,10 @@
 ## 使用`qemu-img`指令创建虚拟机镜像
 
 ```
-  dicardo@ubuntu:~/Desktop/qemu/build/x86_64-softmmu$ qemu-img create -f qcow2 ubuntu.img 10G
+  dicardo@ubuntu:~/Desktop/qemu/build/x86_64-softmmu$ qemu-img create -f qcow2 ubuntu.img 20G
 ```
 
-&emsp; 其中，`-f`用于指定镜像格式，`qcow2`是QEMU最常用的镜像格式，采用写时复制技术来优化性能。`ubunyu.img`是镜像的名字，`10G`是镜像文件大小。输出如下：
+&emsp; 其中，`-f`用于指定镜像格式，`qcow2`是QEMU最常用的镜像格式，采用写时复制技术来优化性能。`ubunyu.img`是镜像的名字，`20G`是镜像文件大小（可使用`qemu-img resize ubuntu.img xxG`来重新设置镜像大小）。输出如下：
 
 ```
   Formatting 'ubuntu.img', fmt=qcow2 cluster_size=65536 extended_l2=off compression_type=zlib size=10737418240 lazy_refcounts=off refcount_bits=16
