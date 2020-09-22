@@ -44,5 +44,22 @@
 
 ## 准备操作系统镜像
 
+&emsp; 从Ubuntu官网获取Ubuntu20.04版本的下载地址，并使用如下指令进行下载：
+
+```
+  dicardo@ubuntu:~/Desktop/qemu/build/x86_64-softmmu$ wget https://releases.ubuntu.com/20.04.1/ubuntu-20.04.1-desktop-amd64.iso
+  --2020-09-22 19:19:59--  https://releases.ubuntu.com/20.04.1/ubuntu-20.04.1-desktop-amd64.iso
+  正在解析主机 releases.ubuntu.com (releases.ubuntu.com)... 91.189.88.247, 91.189.88.248, 91.189.91.124, ...
+  正在连接 releases.ubuntu.com (releases.ubuntu.com)|91.189.88.247|:443... 已连接。
+  已发出 HTTP 请求，正在等待回应... 200 OK
+  长度： 2785017856 (2.6G) [application/x-iso9660-image]
+  正在保存至: “ubuntu-20.04.1-desktop-amd64.iso”
+
+```
+
+
+
+
+
 
 
