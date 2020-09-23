@@ -95,7 +95,7 @@
 用如下指令启动带有ubuntu的虚拟机：
 
 ```
-  sudo ./qemu-system-x86_64 -m 2048 -enable-kvm ubuntu.img -cdrom ./ubuntu-20.04.1-desktop-amd64.iso
+  sudo ./qemu-system-x86_64 -m 4096 -enable-kvm ubuntu.img -cdrom ./ubuntu-20.04.1-desktop-amd64.iso
 ```
 
 &emsp; `-m`指定分配的虚拟机内存大小（默认单位是MB），`--enable-kvm`使用KVM进行加速，`-cdrom`添加ubuntu的安装镜像。可以在弹出的窗口中操作虚拟机，安装操作系统，安装后重启虚拟机便会从硬盘（ubuntu.img）启动。
