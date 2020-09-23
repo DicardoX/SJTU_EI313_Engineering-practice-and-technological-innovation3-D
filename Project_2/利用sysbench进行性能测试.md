@@ -86,7 +86,7 @@
 ### Mutex测试：
 
 ```
-  sysbench –test=mutex –num-threads=100 –mutex-num=1000 –mutex-locks=100000 –mutex-loops=10000 run
+  sysbench --test=mutex --num-threads=4 --mutex-num=2000 --mutex-locks=10000 --mutex-loops=5000 run
 ```
 
 ### OLTP测试（数据库性能测试）：
