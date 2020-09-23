@@ -45,6 +45,59 @@
 
 ## 利用sysbench进行性能测试
 
+### CPU测试：
+
+```
+  sysbench --test=cpu --cpu-max-prime=2000 run
+```
+
+### 线程测试：
+
+```
+  sysbench  --test=threads --num-threads=500 --thread-yields=100 --thread-locks=4 run
+```
+
+### IO测试：
+
+#### 准备阶段：生成需要的测试文件，完成后会在当前目录下生成很多小文件。
+
+```
+  sysbench --test=fileio --num-threads=16 --file-total-size=2G --file-test-mode=rndrw prepare
+```
+
+#### 运行阶段：
+
+```
+  sysbench --test=fileio --num-threads=20 --file-total-size=2G --file-test-mode=rndrw run
+```
+
+#### 清理测试时生成的文件：
+
+```
+  sysbench --test=fileio --num-threads=20 --file-total-size=2G --file-test-mode=rndrw cleanup
+```
+
+### 内存测试：
+
+```
+  sysbench --test=memory --memory-block-size=8k --memory-total-size=1G run
+```
+
+### Mutex测试：
+
+```
+  sysbench –test=mutex –num-threads=100 –mutex-num=1000 –mutex-locks=100000 –mutex-loops=10000 run
+```
+
+### OLTP测试：OLTP是
+
+
+
+
+
+
+
+
 
 
 
