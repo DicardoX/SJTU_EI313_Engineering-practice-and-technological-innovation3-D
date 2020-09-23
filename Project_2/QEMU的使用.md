@@ -103,7 +103,7 @@
 &emsp; 之后要再启动虚拟机，只需要执行如下指令：
 
 ```
-  sudo ./qemu-system-x86_64 -m 2048 -enable-kvm ubuntu.img
+  sudo ./qemu-system-x86_64 -m 4096 -enable-kvm ubuntu.img
 ```
 
 ------------
