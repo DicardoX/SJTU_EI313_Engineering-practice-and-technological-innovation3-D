@@ -59,19 +59,19 @@
 
 ### IO测试：
 
-#### 准备阶段：生成需要的测试文件，完成后会在当前目录下生成很多小文件。
+#### （1）准备阶段：生成需要的测试文件，完成后会在当前目录下生成很多小文件。
 
 ```
   sysbench --test=fileio --num-threads=16 --file-total-size=2G --file-test-mode=rndrw prepare
 ```
 
-#### 运行阶段：
+#### （2）运行阶段：
 
 ```
   sysbench --test=fileio --num-threads=20 --file-total-size=2G --file-test-mode=rndrw run
 ```
 
-#### 清理测试时生成的文件：
+#### （3）清理测试时生成的文件：
 
 ```
   sysbench --test=fileio --num-threads=20 --file-total-size=2G --file-test-mode=rndrw cleanup
@@ -89,10 +89,30 @@
   sysbench –test=mutex –num-threads=100 –mutex-num=1000 –mutex-locks=100000 –mutex-loops=10000 run
 ```
 
-### OLTP测试：OLTP是
+### OLTP测试：
+
+&emsp; OLTP即联机事务处理过程，是对用户操作快速响应的方式之一。https://baike.baidu.com/item/OLTP/5019563?fr=aladdin
+
+#### （1）准备阶段：生成需要的测试表
+
+```
+  sysbench --test=oltp --mysql-table-engine=innodb --mysql-host=10.0.0.8 --mysql-db=testsysbench --oltp-table-size=500000 --mysql-user=root --mysql password=Lad123456 prepare
+```
+
+#### （2）运行阶段：
+
+```
+  sysbench --num-threads=16 --test=oltp --mysql-table-engine=innodb --mysql-host=192.168.x.x --mysql-db=test --oltp-table-size=500000 --mysql-user=root --mysql-password=123456 run
+```
+
+#### （3）清理测试时生成的测试表：
+
+```
+  sysbench --num-threads=16 --test=oltp --mysql-table-engine=innodb --mysql-host=192.168.x.x --mysql-db=test --oltp-table-size=500000 --mysql-user=root --mysql-password=123456 cleanup
+```
 
 
-
+--------------
 
 
 
