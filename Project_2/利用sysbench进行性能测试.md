@@ -89,7 +89,7 @@
   sysbench –test=mutex –num-threads=100 –mutex-num=1000 –mutex-locks=100000 –mutex-loops=10000 run
 ```
 
-### OLTP测试：
+### OLTP测试（数据库性能测试）：
 
 &emsp; OLTP即联机事务处理过程，是对用户操作快速响应的方式之一。https://baike.baidu.com/item/OLTP/5019563?fr=aladdin
 
