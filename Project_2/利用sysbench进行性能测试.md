@@ -1,4 +1,4 @@
-# 利用`sysbench`进行Xen的性能测试
+# 利用`sysbench`进行性能测试
 
 [参考链接：sysbench的安装和使用](https://www.cnblogs.com/chenshengkai/p/12626756.html)
 
@@ -43,7 +43,7 @@
 
 ---------------
 
-## 利用sysbench进行Xen的性能测试
+## 利用sysbench进行性能测试
 
 
 
