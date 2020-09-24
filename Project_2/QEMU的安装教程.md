@@ -26,6 +26,13 @@
   链接: https://pan.baidu.com/s/1ovUVVt0YX44MlZqrrYiy-w  密码: 7f32
 ```
 
+&emsp; 或在命令行输入如下指令：
+
+```
+  wget https://download.qemu.org/qemu-5.1.0.tar.xz
+  tar xvJf qemu-5.1.0.tar.xz
+```
+
 --------------
 
 ## 编译
