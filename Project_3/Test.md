@@ -35,7 +35,9 @@
 
 `reboot`重启。
 
-下载`Ubuntu18.04`镜像，其间顺便安装一下`sudo apt-get install virt-manager`。
+下载`Ubuntu18.04`镜像，其间顺便安装一下`sudo apt-get install virt-manager`。一直报错，决定从一开始就先安装好`virt-manager`.
+
+
 
 
 
