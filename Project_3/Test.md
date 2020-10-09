@@ -25,3 +25,24 @@
   make
   sudo make install
 ```
+（makefile发生错误后）更改为`libvirt-4.4.0`版本.
+
+`./configure`遇到`configure: error: "xsltproc is required to build libvirt"`错误。解决方案`sudo apt-get install xsltproc`
+
+完成`./configure`后开始`make`,完成。
+
+之后开始`sudo make install`,完成。
+
+`reboot`重启。
+
+下载`Ubuntu18.04`镜像，其间顺便安装一下`sudo apt-get install virt-manager`。
+
+
+
+
+
+
+
+
+
+
