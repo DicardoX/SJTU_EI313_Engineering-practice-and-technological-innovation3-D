@@ -45,7 +45,11 @@
 
 `configure: error: You must install the pciaccess module to build with udev`错误。[解决方案](https://blog.csdn.net/heybob/article/details/24481397)
 
+`configure: error: You must install device-mapper-devel/libdevmapper to compile libvirt with mpath storage driver`
 
+解决方法：`sudo apt-get install libdevmapper-dev`[解决方案](http://blog.sina.com.cn/s/blog_896b31c701013qc2.html)
+
+`./configure`完成，开始`make`
 
 
 
