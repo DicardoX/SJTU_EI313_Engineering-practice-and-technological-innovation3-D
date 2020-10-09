@@ -1,5 +1,9 @@
 # Virsh创建虚拟机
 
+[参考链接](https://blog.csdn.net/iov_aaron/article/details/82494920)
+
+注意，`virsh undefine ubuntu-controller # 取消定义`。
+
 ---------------
 
 ## 过程中使用的XML文件（注意`emulator`部分）：
