@@ -37,7 +37,9 @@
 
 下载`Ubuntu18.04`镜像，其间顺便安装一下`sudo apt-get install virt-manager`。一直报错，决定从一开始就先安装好`virt-manager`.
 
+`./configure`遇到`configure: error: libnl-devel >= 1.1 is required for macvtap support`错误。解决方案参见[libnl-dev依赖包补充](https://blog.csdn.net/ever_peng/article/details/80161863)
 
+`No package 'libnl-route-3.0' found`解决方案见上。
 
 
 
