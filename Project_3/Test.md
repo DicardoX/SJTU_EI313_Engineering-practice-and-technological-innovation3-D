@@ -52,6 +52,17 @@
 `./configure`完成，开始`make`
 
 
+(放弃从源码编译安装)
+
+```
+  sudo apt-get install virt-manager
+  sudo apt-get install virtinst
+  sudo apt-get install libvirt-bin
+  sudo apt-get install libvirt-dev
+```
+
+
+
 
 
 
