@@ -6,4 +6,4 @@
 
 [libnl-dev依赖包补充](https://blog.csdn.net/ever_peng/article/details/80161863)
 
-`No package 'libnl-route-3.0' found`
+`No package 'libnl-route-3.0' found` [解决方案](https://blog.csdn.net/subfate/article/details/51987397)
