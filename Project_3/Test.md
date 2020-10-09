@@ -41,7 +41,9 @@
 
 `No package 'libnl-route-3.0' found`解决方案见上。
 
+`configure: error: libxml2 >= 2.6.0 is required for libvirt`错误。[解决方案](http://blog.sina.com.cn/s/blog_896b31c701013qc2.html)（一共两个指令）。
 
+`configure: error: You must install the pciaccess module to build with udev`错误。[解决方案](https://blog.csdn.net/heybob/article/details/24481397)
 
 
 
