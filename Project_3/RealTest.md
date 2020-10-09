@@ -25,5 +25,11 @@
 &emsp; 解决方案：
 
 ```
-  python3 check.py
+	sudo apt-get install python3-libvirt
+```
+
+&emsp; 运行python脚本
+
+``` 
+	python3 check.py
 ```
