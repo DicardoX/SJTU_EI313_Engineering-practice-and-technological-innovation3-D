@@ -4,6 +4,21 @@
 
 ---------------
 
+&emsp; 安装qemu环境：
+
+```
+	sudo apt-get install qemu
+	sudo apt-get install qemu-kvm
+```
+
+&emsp; 安装相关软件和包：
+
+```
+	sudo apt-get install virtinst
+	sudo apt-get install libvirt-dev
+	sudo apt-get install libvirt-bin
+```
+
 &emsp; Python脚本代码：
 
 ```
