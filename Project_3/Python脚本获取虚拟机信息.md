@@ -19,7 +19,11 @@
 	sudo apt-get install libvirt-bin
 ```
 
-&emsp; Python脚本代码：
+&emsp; `sudo virt-manager`打开虚拟机管理器，并新建一个虚拟机。
+
+&emsp; `sudo virsh list`可以查看运行过程中的虚拟机；`sudo virsh list --all`可以查看包括关闭状态在内的全部虚拟机。
+
+&emsp; 在虚拟机运行过程中运行如下python脚本代码：
 
 ```
 	import libvirt
