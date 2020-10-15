@@ -4,4 +4,4 @@
   
   - Project 2: Complie `QEMU` in Ubuntu18.04 and install a vritual machine on it
   
-  - Project 3: Install Libvirt, then write python or C script with Libvirt Python or C  API to get virtual machine ID, name, max memory, and the number of virtual CPUs.
+  - Project 3: Install Libvirt, then write python script with Libvirt Python API to get information of VM.
