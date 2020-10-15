@@ -1,4 +1,6 @@
-# Engineering-practice-and-technological-innovation3-D
+# SJTU EI313: Engineering-practice-and-technological-innovation3-D
+
+
 
   - Project 1: Install a vritual machine
   
