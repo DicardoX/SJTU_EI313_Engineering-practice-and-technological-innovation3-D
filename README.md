@@ -4,4 +4,4 @@
   
   - Project 2: Complie `QEMU` in Ubuntu18.04 and install a vritual machine on it
   
-  - Project 3: Install Libvirt, then write python script with Libvirt Python API to get information of VM.
+  - Project 3: Install `Libvirt`, then write `python script` with Libvirt Python API to get information of VM.
