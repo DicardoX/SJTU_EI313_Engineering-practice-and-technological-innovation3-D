@@ -19,5 +19,5 @@ sudo apt-get install net-tools
 ## 输入指令：
 
 ```
- sudo ifconfig -a
+sudo ifconfig -a
 ```
