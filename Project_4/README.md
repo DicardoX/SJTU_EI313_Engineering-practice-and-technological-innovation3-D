@@ -14,6 +14,8 @@
 
 [参考链接二：QEMU架构浅析](https://cloud.tencent.com/developer/article/1521505)
 
+[参考链接三：Linux 下 kvm 虚拟化 Windows 的几个性能优化建议](https://v2ex.com/t/607276)
+
 &emsp; 在vl.c中定义了启动入口main函数:
 
 &emsp; `void qemu_init(int argc, char **argv, char **envp)`
