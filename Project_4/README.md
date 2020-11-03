@@ -10,7 +10,9 @@
 
 ## `QEMU`源码分析：
 
-[参考链接：QEMU 3.1.0 源码学习](https://abelsu7.top/2019/06/04/qemu-src-notes/)
+[参考链接一：QEMU 3.1.0 源码学习](https://abelsu7.top/2019/06/04/qemu-src-notes/)
+
+[参考链接二：QEMU架构浅析](https://cloud.tencent.com/developer/article/1521505)
 
 &emsp; 在vl.c中定义了启动入口main函数:
 
