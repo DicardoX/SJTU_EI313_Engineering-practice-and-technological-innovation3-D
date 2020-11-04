@@ -107,6 +107,9 @@ void start_exclusive(void)
 
 
 
+### 2. `cpus-common.c`文件中`void cpu_exec_step_atomic(CPUState *cpu)`函数调用`start_exclusive()`函数的位置
+
+
 
 
 
