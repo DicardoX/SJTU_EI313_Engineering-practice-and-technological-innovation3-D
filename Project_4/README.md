@@ -24,6 +24,71 @@
 
 &emsp; 我们使用`qemu-3.0.1`版本作为母版进行修改，原因是更高版本的`qemu`代码优化程度更高，更不易从源码进行改进。
 
-&emsp; 
+&emsp; 我们从如下几个方面进行`qemu-3.0.1`源码的改进：
 
-### `cpus-common.c`文件中`start-exclusive`
+### 1. `cpus-common.c`文件中`void cpu_exec_step_atomic(CPUState *cpu)`函数调用`start_exclusive()`函数的位置
+
+&emsp; 首先阐释`start_exclusive()`函数的作用：
+
+```
+/* Start an exclusive operation.
+   Must only be called from outside cpu_exec.  */
+void start_exclusive(void)
+{
+    CPUState *other_cpu;
+    int running_cpus;
+
+    qemu_mutex_lock(&qemu_cpu_list_lock);
+    exclusive_idle();
+
+    /* Make all other cpus stop executing.  */
+    atomic_set(&pending_cpus, 1);
+
+    /* Write pending_cpus before reading other_cpu->running.  */
+    smp_mb();
+    running_cpus = 0;
+    CPU_FOREACH(other_cpu) {
+        if (atomic_read(&other_cpu->running)) {
+            other_cpu->has_waiter = true;
+            running_cpus++;
+            qemu_cpu_kick(other_cpu);
+        }
+    }
+
+    atomic_set(&pending_cpus, running_cpus + 1);
+    while (pending_cpus > 1) {
+        qemu_cond_wait(&exclusive_cond, &qemu_cpu_list_lock);
+    }
+
+    /* Can release mutex, no one will enter another exclusive
+     * section until end_exclusive resets pending_cpus to 0.
+     */
+    qemu_mutex_unlock(&qemu_cpu_list_lock);
+}
+```
+
+&emsp; 可以看到，`qemu-3.0.1`的`start_exclusive()`函数调用的位置如下：
+
+```
+  if (sigsetjmp(cpu->jmp_env, 0) == 0) {
+        tb = tb_lookup__cpu_state(cpu, &pc, &cs_base, &flags, cf_mask);
+        if (tb == NULL) {
+            mmap_lock();
+            tb = tb_gen_code(cpu, pc, cs_base, flags, cflags);
+            mmap_unlock();
+        }
+
+        start_exclusive();
+```
+
+
+
+
+
+
+
+
+
+
+
+
