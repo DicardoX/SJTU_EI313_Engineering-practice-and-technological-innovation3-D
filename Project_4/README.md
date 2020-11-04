@@ -91,8 +91,19 @@ void start_exclusive(void)
  - 函数说明：sigsetjmp()会保存目前堆栈环境，然后将目前的地址作一个记号，而在程序其他地方调用siglongjmp()时便会直接跳到这个记号位置，然后还原堆栈，继续程序的执行。参数env为用来保存目前堆栈环境，一般声明为全局变量；参数savesigs若为非0则代表搁置的信号集合也会一块保存，当sigsetjmp()返回0时代表已经做好记号上，若返回非0则代表由siglongjmp（）跳转回来。  
  - 返回：若直接调用则为0，若从siglongjmp调用返回则为非0 
 
+&emsp; 显然，我们在进行cpu的上下文切换之前，必须要调用`sigsetjmp()`函数将当前的堆栈环境保存，否则这样的跳转是无效的。然而，`qemu-3.1.0`的实现中，无论sigsetjmp返回值是否为0（当为0时代表当前堆栈环境保存成功），都会调用`start_exclusive()`函数开始进行cpu的切换，这显然是不合理的，会造成cpu无效的上下文切换，进而降低cpu的使用效率。因此，我们应该对其做如下改进：
 
-
+```
+  if (sigsetjmp(cpu->jmp_env, 0) == 0) {
+        start_exclusive();                                                 // Move to here
+        
+        tb = tb_lookup__cpu_state(cpu, &pc, &cs_base, &flags, cf_mask);
+        if (tb == NULL) {
+            mmap_lock();
+            tb = tb_gen_code(cpu, pc, cs_base, flags, cflags);
+            mmap_unlock();
+        }
+```
 
 
 
