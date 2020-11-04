@@ -23,3 +23,7 @@
 &emsp; `cpu-exec.c`和`cpus.c`文件依次上传了`qemu-3.0.1`和`qemu-5.1.0`两个版本的`cpu-exec.c` / `cpus.c`文件，以此使用`History`代码比对功能来观察不同版本文件的变化。
 
 &emsp; 我们使用`qemu-3.0.1`版本作为母版进行修改，原因是更高版本的`qemu`代码优化程度更高，更不易从源码进行改进。
+
+&emsp; 
+
+### `cpus-common.c`文件中`start-exclusive`
