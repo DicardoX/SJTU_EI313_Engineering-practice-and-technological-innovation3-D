@@ -26,13 +26,13 @@
 
 &emsp; 我们从如下几个方面进行`qemu-3.0.1`源码的改进：
 
-### 1. `cpus-common.c`文件中`void cpu_exec_step_atomic(CPUState *cpu)`函数调用`start_exclusive()`函数的位置
+### 1. `cpu-exec.c`文件中`void cpu_exec_step_atomic(CPUState *cpu)`函数调用`start_exclusive()`函数的位置
 
 &emsp; 首先阐释`start_exclusive()`函数的作用：
 
  - 通过`atomic_set()`、`atomic_read()`等原子操作函数来读取当前cpu总的运行状态，若有其他cpu正在运行，则将其暂停并保存在一个等待队列中。当且仅当`end_exclusive()`函数被执行时，该cpu才可能被执行。同时，该函数设置了一个锁`mutex`，来保证每个时刻最多只有一个cpu访问`pending_cpus`变量和全部其他cpu的运行状态信息。
  
- &emsp; 下面是`qemu-3.0.1`中`start_exclusive()`函数的实现：
+ &emsp; 下面是`qemu-3.0.1`中`start_exclusive()`函数的实现（位于`cpus-common.c`文件中）：
 
 ```
 /* Start an exclusive operation.
@@ -107,7 +107,9 @@ void start_exclusive(void)
 
 &emsp;
 
-### 2. `cpus-common.c`文件中`void cpu_exec_step_atomic(CPUState *cpu)`函数调用`start_exclusive()`函数的位置
+### 2. `cpu-exec.c`文件中`static inline bool cpu_handle_interrupt(CPUState *cpu, TranslationBlock **last_tb)`函数在debug时`GDB (GNU Debugger)`可能存在的指令丢失问题
+
+&emsp; 在
 
 
 
