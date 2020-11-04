@@ -109,9 +109,48 @@ void start_exclusive(void)
 
 ### 2. `cpu-exec.c`文件中`static inline bool cpu_handle_interrupt(CPUState *cpu, TranslationBlock **last_tb)`函数在debug时`GDB (GNU Debugger)`可能存在的指令丢失问题
 
-&emsp; 在
+&emsp; `qemu-3.0.1`中`cpu_handle_interrupt()`函数在判断`exit condition`时的部分代码如下：
 
+```
+/* The target hook has 3 exit conditions:
+False when the interrupt isn't processed,
+True when it is, and we should restart on a new TB,
+and via longjmp via cpu_loop_exit.  */
+else {
+    if (cc->cpu_exec_interrupt(cpu, interrupt_request)) {
+        replay_interrupt();
+        cpu->exception_index = -1;
+        *last_tb = NULL;
+    }
+    /* The target hook may have updated the 'cpu->interrupt_request';
+     * reload the 'interrupt_request' value */
+    interrupt_request = cpu->interrupt_request;
+}
+```
 
+&emsp; 在`qemu-3.0.1`的`cpu-exec.c`文件中，`cpu_handle_interrupt()`函数的设计使得当cpu开启`single step`模式时，`GDB (GNU Debugger)`在执行时可能会miss下一条指令，因此我们需要增添一个标志`cpu->singlestep_enabled`，来标志执行该语句时，cpu是否开启了`single step`，以及一个宏`EXCP_DEBUG`来给处于`single step`模式下的`cpu->exception_index`赋值。改进如下：
+
+```
+/* The target hook has 3 exit conditions:
+False when the interrupt isn't processed,
+True when it is, and we should restart on a new TB,
+and via longjmp via cpu_loop_exit.  */
+else {
+    if (cc->cpu_exec_interrupt(cpu, interrupt_request)) {
+        replay_interrupt();
+        /*
+        * After processing the interrupt, ensure an EXCP_DEBUG is
+        * raised when single-stepping so that GDB doesn't miss the
+        * next instruction.
+        */
+        cpu->exception_index = (cpu->singlestep_enabled ? EXCP_DEBUG : -1);
+        *last_tb = NULL;
+    }
+    /* The target hook may have updated the 'cpu->interrupt_request';
+     * reload the 'interrupt_request' value */
+    interrupt_request = cpu->interrupt_request;
+}
+```
 
 
 
