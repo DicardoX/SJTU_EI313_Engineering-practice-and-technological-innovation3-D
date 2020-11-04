@@ -30,6 +30,10 @@
 
 &emsp; 首先阐释`start_exclusive()`函数的作用：
 
+ - 通过`atomic_set()`、`atomic_read()`等原子操作函数来读取当前cpu总的运行状态，若有其他cpu正在运行，则将其暂停并保存在一个等待队列中。当且仅当`end_exclusive()`函数被执行时，该cpu才可能被执行。同时，该函数设置了一个锁`mutex`，来保证每个时刻最多只有一个cpu访问`pending_cpus`变量和全部其他cpu的运行状态信息。
+ 
+ &emsp; 下面是`qemu-3.0.1`中`start_exclusive()`函数的实现：
+
 ```
 /* Start an exclusive operation.
    Must only be called from outside cpu_exec.  */
