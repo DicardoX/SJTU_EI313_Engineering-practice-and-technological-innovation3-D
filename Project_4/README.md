@@ -26,7 +26,7 @@
 
 &emsp; 我们从如下几个方面进行`qemu-3.0.1`源码的改进：
 
-### 1. `cpu-exec.c`文件中`void cpu_exec_step_atomic(CPUState *cpu)`函数调用`start_exclusive()`函数的位置
+### 1. `cpu-exec.c`文件中`void cpu_exec_step_atomic(CPUState *cpu)`函数调用`start_exclusive()`函数的位置：
 
 &emsp; 首先阐释`start_exclusive()`函数的作用：
 
@@ -107,7 +107,13 @@ void start_exclusive(void)
 
 &emsp;
 
-### 2. `cpu-exec.c`文件中`static inline bool cpu_handle_interrupt(CPUState *cpu, TranslationBlock **last_tb)`函数在debug时`GDB (GNU Debugger)`可能存在的指令丢失问题
+### 4. `cpus.c`文件中`cpu_thread_is_idle(CPUState *cpu)`函数判断依据的加强：
+
+&emsp; 
+
+&emsp;
+
+### 3. `cpu-exec.c`文件中`static inline bool cpu_handle_interrupt(CPUState *cpu, TranslationBlock **last_tb)`函数在debug时`GDB (GNU Debugger)`可能存在的指令丢失问题：
 
 &emsp; `qemu-3.0.1`中`cpu_handle_interrupt()`函数在判断`exit condition`时的部分代码如下：
 
