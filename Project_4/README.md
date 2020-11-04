@@ -109,7 +109,39 @@ void start_exclusive(void)
 
 ### 2. `cpus.c`文件中`cpu_thread_is_idle(CPUState *cpu)`函数判断依据的加强：
 
-&emsp; 
+&emsp; 在`qemu-3.0.1`的判断`cpu thread`非空闲的实现中，仅仅使用了`cpu->stop`和一个简单的标志`cpu->queued_work_first`来判断返回值为`false`的条件，需要注意的是`cpu->queued_work_first`所标志的是是否允许当前队列中的cpu优先执行，且单独一个`flag`可能会在其他函数的执行中被错误地修改，导致“死锁“现象的发生：
+
+```
+static bool cpu_thread_is_idle(CPUState *cpu)
+{
+    if (cpu->stop || cpu->queued_work_first) {
+        return false;
+    }
+    // ... ...
+ }
+```
+
+&emsp; 因此，我们单独创建一个静态内联的函数`static inline bool cpu_work_list_empty(CPUState *cpu)`来检测当前cpu工作队列是否为空，并利用`mutex_lock`锁来保证查询的互斥性。这样，我们避免了错误判断cpu工作队列非空而导致的“死锁”现象的发生，提高了cpu的并行效率。改进如下：
+
+```
+static inline bool cpu_work_list_empty(CPUState *cpu)
+{
+    bool ret;
+
+    qemu_mutex_lock(&cpu->work_mutex);
+    ret = QSIMPLEQ_EMPTY(&cpu->work_list);
+    qemu_mutex_unlock(&cpu->work_mutex);
+    return ret;
+}
+
+static bool cpu_thread_is_idle(CPUState *cpu)
+{
+    if (cpu->stop || !cpu_work_list_empty(cpu)) {
+        return false;
+    }
+    // ... ...
+}
+```
 
 &emsp;
 
@@ -134,7 +166,7 @@ else {
 }
 ```
 
-&emsp; 在`qemu-3.0.1`的`cpu-exec.c`文件中，`cpu_handle_interrupt()`函数的设计使得当cpu开启`single step`模式时，`GDB (GNU Debugger)`在执行时可能会miss下一条指令，因此我们需要增添一个标志`cpu->singlestep_enabled`，来标志执行该语句时，cpu是否开启了`single step`，以及一个宏`EXCP_DEBUG`来给处于`single step`模式下的`cpu->exception_index`赋值。改进如下：
+&emsp; 在`qemu-3.0.1`的`cpu-exec.c`文件中，`cpu_handle_interrupt()`函数的设计使得当cpu开启`single step`模式时，`GDB (GNU Debugger)`在执行时可能会miss下一条指令，因此我们需要增添一个标志`cpu->singlestep_enabled`，来标志执行该语句时，cpu是否开启了`single step`，以及一个宏`EXCP_DEBUG`来给处于`single step`模式下的`cpu->exception_index`赋值。通过这样的改进，我们较好地避免了`GNB`工作时产生的指令丢失，降低了调试损耗，提高了系统的工作效率。改进如下：
 
 ```
 /* The target hook has 3 exit conditions:
@@ -158,7 +190,9 @@ else {
 }
 ```
 
+&emsp;
 
+-----------------------------
 
 
 
