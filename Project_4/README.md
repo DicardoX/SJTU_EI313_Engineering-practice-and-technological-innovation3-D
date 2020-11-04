@@ -107,7 +107,7 @@ void start_exclusive(void)
 
 &emsp;
 
-### 4. `cpus.c`文件中`cpu_thread_is_idle(CPUState *cpu)`函数判断依据的加强：
+### 2. `cpus.c`文件中`cpu_thread_is_idle(CPUState *cpu)`函数判断依据的加强：
 
 &emsp; 
 
