@@ -82,8 +82,14 @@ void start_exclusive(void)
             mmap_unlock();
         }
 
-        start_exclusive();
+  start_exclusive();
 ```
+
+&emsp; `sigsetjmp()`函数的作用：
+
+ - 函数定义：int sigsetjmp(sigjmp_buf env, int savesigs)  
+ - 函数说明：sigsetjmp()会保存目前堆栈环境，然后将目前的地址作一个记号，而在程序其他地方调用siglongjmp()时便会直接跳到这个记号位置，然后还原堆栈，继续程序的执行。参数env为用来保存目前堆栈环境，一般声明为全局变量；参数savesigs若为非0则代表搁置的信号集合也会一块保存，当sigsetjmp()返回0时代表已经做好记号上，若返回非0则代表由siglongjmp（）跳转回来。  
+ - 返回：若直接调用则为0，若从siglongjmp调用返回则为非0 
 
 
 
