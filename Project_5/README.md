@@ -9,3 +9,5 @@
 &emsp; 所使用的xml配置文件见`demo.xml`。
 
 &emsp; `virsh define demo.xml`之后，`virsh start ubuntu1`开启虚拟机，并使用`virt-manager`来管理虚拟机 + 进入虚拟机。
+
+&emsp; 注意：当虚拟机中出现`graphics initialization failed Error setting up gfxboot`的报错时，只需要键入`help`，进入界面后按`enter`即可开始安装。
