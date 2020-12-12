@@ -6,7 +6,7 @@
 
 [参考链接：Linux实现KVM+QEMU+libvirt的虚拟机环境 并使用virsh对虚拟机进行管理](https://blog.csdn.net/qq_24369113/article/details/52929439)
 
-&emsp; 所使用的xml配置文件见`demo.xml`。
+&emsp; 在直接使用`virt-manager`创建虚拟机时报错，因此决定采用`qemu-img create` + `virsh define demo.xml`的方式进行配置（所使用的xml配置文件见`demo.xml`）。
 
 &emsp; `virsh define demo.xml`之后，`virsh start ubuntu1`开启虚拟机，并使用`virt-manager`来管理虚拟机 + 进入虚拟机。
 
