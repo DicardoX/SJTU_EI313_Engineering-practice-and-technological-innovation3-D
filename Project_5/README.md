@@ -10,4 +10,4 @@
 
 &emsp; `virsh define demo.xml`之后，`virsh start ubuntu1`开启虚拟机，并使用`virt-manager`来管理虚拟机 + 进入虚拟机。
 
-&emsp; 注意：当虚拟机中出现`graphics initialization failed Error setting up gfxboot`的报错时，只需要键入`help`，进入界面后按`enter`即可开始安装。
+&emsp; 注意：当虚拟机中出现`graphics initialization failed Error setting up gfxboot`的报错时，只需要键入`help`，进入界面后按`enter`即可开始安装。注意！这样的情况是由于每次都是从光盘启动，因此每次重启都会重新安装UbuntuOS，应该在虚拟机设置中改为从磁盘启动！
