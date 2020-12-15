@@ -87,9 +87,7 @@ INSTALL-MAP helloworld.map
 
 &emsp; 在最后运行时可能会报`cpu type`不支持`SSSE3`或者`SSSE4_1`指令集，此时关闭虚拟机，在`virt-manager`中将cpu类型改为`Opteron_G5`即可（好多可用的虚拟cpu型号并不显示在下拉菜单里，可以在源主机中用`qemu-system-x86_64 -cpu help`指令来查看可用的cpu型号）。
 
-
-
- 
+&emsp; 至此，kvm虚拟机上的`dpdk`库安装完成。
  
  
  
