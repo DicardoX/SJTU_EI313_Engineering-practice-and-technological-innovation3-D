@@ -45,9 +45,46 @@
 
 ---------------
 
-## 3. 
+### 3. 利用`usertools/dpdk-devbind.py`绑定网卡
+
+ - 安装`net-tools`，使用`ifconfig`查看网卡配置，发现目前kvm虚拟机只有一个网卡，因此需要再源主机上再为其创建一个。源主机本身就有一个`virbr0`，按照[参考链接二](https://www.cnblogs.com/wangyong-blog/p/11148133.html)的方式为kvm虚拟机添加一个新的网卡。
  
+ - `ifconfig [name] down`将网卡解绑（name为网卡名称）
  
+ - 加载`uio_pci_generic`功能：`sudo modprobe uio_pci_generic`
+ 
+ - 绑定网卡到`uio_pci_generic`下：`./dpdk-devbind.py --bind=uio_pci_generic [name]`
+ 
+ - 查看kvm虚拟机网卡设备状态：`./dpdk-devbind.py --status`
+ 
+---------------
+
+### 4. 配置`HugePage`
+
+&emsp; 进入`usertools`文件夹后`./dpdk-setup.sh`。一开始选择`pages`数目为64，在运行helloworld时报错无法获得page资源，因此修改为512，解决。
+
+--------------
+
+### 5. `examples/helloworld`的编译和运行
+
+&emsp; 进入`examples/helloworld`，进行如下配置：
+
+```
+export RTE_SDK=/home/lianpeng/dpdk-19.11（此处为DPDK的解压目录，改成自己的）
+export RTE_TARGET=x86_64-native-linuxapp-gcc（改成自己的DPDK环境配置）
+```
+
+&emsp; 然后编译`make`，会有如下输出：
+
+```
+CC main.o
+LD helloworld
+INSTALL-APP helloworld
+INSTALL-MAP helloworld.map
+```
+
+&emsp; 进入`build`目录，运行`sudo ./helloworld`（注意，要在root权限下运行，否则会报错），会有输出且最后一句
+
  
  
  
