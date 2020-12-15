@@ -83,7 +83,11 @@ INSTALL-APP helloworld
 INSTALL-MAP helloworld.map
 ```
 
-&emsp; 进入`build`目录，运行`sudo ./helloworld`（注意，要在root权限下运行，否则会报错），会有输出且最后一句
+&emsp; 进入`build`目录，运行`sudo ./helloworld`（注意，要在root权限下运行，否则会报错），会有输出（最后一句为`hello from core 0`，取决于kvm虚拟机有多少个vcpu）。
+
+&emsp; 在最后运行时可能会报`cpu type`不支持`SSSE3`或者`SSSE4_1`指令集，此时关闭虚拟机，在`virt-manager`中将cpu类型改为`Opteron_G5`即可（好多可用的虚拟cpu型号并不显示在下拉菜单里，可以在源主机中用`qemu-system-x86_64 -cpu help`指令来查看可用的cpu型号）。
+
+
 
  
  
