@@ -90,7 +90,19 @@ INSTALL-MAP helloworld.map
 &emsp; 至此，kvm虚拟机上的`dpdk`库安装完成。
  
  
- 
+&emsp; 相关依赖包：
+
+```
+sudo apt install linux-headers-$(uname -r) 
+sudo apt install build-essential git gcc 
+pip3 install meson ninja
+sudo apt install python3-pip meson
+sudo apt install libpcap-dev liblz4-dev liblz4-tool
+sudo apt install libnuma-dev libarchive-dev
+sudo apt install libisal-dev libfdt-dev libbpfcc-dev 
+sudo apt install libssl-dev libcrypto++6 libelf-dev  
+sudo apt install wireshark
+```
  
  
  
