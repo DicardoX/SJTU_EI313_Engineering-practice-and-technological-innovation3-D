@@ -206,6 +206,8 @@ run = {
 }
 ```
 
-
+```
+sudo ./dpdk-l2fwd -c 0x1 -n 2 -d /usr/local/lib/x86_64-linux-gnu/ -- -p 0x1 -q 10 -T 1
+```
 
  
