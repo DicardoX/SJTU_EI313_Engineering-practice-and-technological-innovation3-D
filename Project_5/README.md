@@ -193,8 +193,10 @@ run = {
  }
 ```
 
-
-
+```
+sudo ./tool/run.py -s mytest
+sudo ./tool/run.py mytest
+```
 
  
  
