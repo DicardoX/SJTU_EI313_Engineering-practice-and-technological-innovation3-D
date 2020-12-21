@@ -157,39 +157,39 @@ setup = {
                 'sudo', '-E'
         ),
         'devices': (
-                '00:03.0',
+                '00:03.0',                                       # 网卡设备
         ),
         # UIO module type, igb_uio, vfio-pci or uio_pci_generic
-        'uio': 'igb_uio'
+        'uio': 'igb_uio'                                         # uio支持的内核模块
 }
 
 # Run options
 run = {
       'exec': ('sudo', '-E'),
-      'app_name': 'pktgen',
+      'app_name': 'pktgen',                                      # 名称
       'app_path': (
-              './usr/local/bin/%(app_name)s',
+              './usr/local/bin/%(app_name)s',                    # 路径
               '/usr/local/bin/%(app_name)s'
       ),
-      'cores': '0-1',
-      'nrank': '5',
+      'cores': '0-1',                                            # 使用两个逻辑内核
+      'nrank': '5',                                              # 开启5个内存通道
       'proc': 'auto',
       'log': '7',
       'prefix': 'pg',
-      'blocklist': (),
+      'blocklist': (),                                           # 黑名单设为空
       'allowlist': (
-              '00:03.0',
+              '00:03.0',                                         # 允许的网卡设备
       ),
       'opts': (
               '-v',
               '-T',
-              '-P',
+              '-P',                                              # 开启网卡混杂模式
               '-j',
       ),
       'map': (
               '1.0',
       ),
-      'theme': 'themes/black-yellow.theme'
+      'theme': 'themes/black-yellow.theme'                       # 主题
  }
 ```
 
