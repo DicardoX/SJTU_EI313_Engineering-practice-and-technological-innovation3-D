@@ -120,7 +120,19 @@ export PKG_CONFIG_PATH=/usr/local/lib/x86_64-linux-gnu/pkgconfig
 qemu-system-x86_64 -cpu help
 ```
  
- 
+```
+sudo su
+echo 1024 > /sys/kernel/mm/hugepages/hugepages-2048kB/nr_hugepages 
+mkdir /mnt/huge
+mount -t hugetlbfs nodev /mnt/huge
+```
+
+```
+cat /proc/meminfo | grep Huge
+```
+
+
+
  
  
  
