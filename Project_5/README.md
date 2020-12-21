@@ -131,7 +131,12 @@ mount -t hugetlbfs nodev /mnt/huge
 cat /proc/meminfo | grep Huge
 ```
 
-
+```
+sudo modprobe uio
+sudo insmod igb_kio.ko
+sudo modprobe uio_pci_generic 
+sudo modprobe vfio-pci
+```
 
  
  
