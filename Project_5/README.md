@@ -104,7 +104,11 @@ sudo apt install libssl-dev libcrypto++6 libelf-dev
 sudo apt install wireshark
 ```
  
- 
+```
+meason build
+cd build
+ninja
+```
  
  
  
