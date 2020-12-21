@@ -110,7 +110,11 @@ cd build
 ninja
 ```
  
- 
+```
+ninja install
+sudo ldconfig
+export PKG_CONFIG_PATH=/usr/local/lib/x86_64-linux-gnu/pkgconfig
+```
  
  
  
