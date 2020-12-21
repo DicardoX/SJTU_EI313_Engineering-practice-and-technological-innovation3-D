@@ -149,5 +149,52 @@ ninja
 ninja install
 ```
  
+```
+description = 'A Pktgen custom configuration'
+# Setup information
+setup = {
+        'exec': (
+                'sudo', '-E'
+        ),
+        'devices': (
+                '00:03.0',
+        ),
+        # UIO module type, igb_uio, vfio-pci or uio_pci_generic
+        'uio': 'igb_uio'
+}
+
+# Run options
+run = {
+      'exec': ('sudo', '-E'),
+      'app_name': 'pktgen',
+      'app_path': (
+              './usr/local/bin/%(app_name)s',
+              '/usr/local/bin/%(app_name)s'
+      ),
+      'cores': '0-1',
+      'nrank': '5',
+      'proc': 'auto',
+      'log': '7',
+      'prefix': 'pg',
+      'blocklist': (),
+      'allowlist': (
+              '00:03.0',
+      ),
+      'opts': (
+              '-v',
+              '-T',
+              '-P',
+              '-j',
+      ),
+      'map': (
+              '1.0',
+      ),
+      'theme': 'themes/black-yellow.theme'
+ }
+```
+
+
+
+
  
  
