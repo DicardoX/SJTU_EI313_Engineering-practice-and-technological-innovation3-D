@@ -122,7 +122,7 @@ qemu-system-x86_64 -cpu help
  
 ```
 sudo su
-echo 1024 > /sys/kernel/mm/hugepages/hugepages-2048kB/nr_hugepages 
+echo 512 > /sys/kernel/mm/hugepages/hugepages-2048kB/nr_hugepages 
 mkdir /mnt/huge
 mount -t hugetlbfs nodev /mnt/huge
 ```
