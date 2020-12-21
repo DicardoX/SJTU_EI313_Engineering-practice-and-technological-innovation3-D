@@ -116,8 +116,9 @@ sudo ldconfig
 export PKG_CONFIG_PATH=/usr/local/lib/x86_64-linux-gnu/pkgconfig
 ```
  
- 
- 
+```
+qemu-system-x86_64 -cpu help
+```
  
  
  
