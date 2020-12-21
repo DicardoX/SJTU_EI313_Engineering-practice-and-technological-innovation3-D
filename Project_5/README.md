@@ -210,4 +210,12 @@ run = {
 sudo ./dpdk-l2fwd -c 0x1 -n 5 -d /usr/local/lib/x86_64-linux-gnu/ -- -p 0x3 -q 10 -T 1
 ```
 
+```
+set 0 dst ip [ip_address]
+set 0 dst mac [mac_address] 
+set 0 size [size]
+start 0
+```
+
+
  
