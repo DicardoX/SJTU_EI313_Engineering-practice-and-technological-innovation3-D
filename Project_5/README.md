@@ -138,7 +138,9 @@ sudo modprobe uio_pci_generic
 sudo modprobe vfio-pci
 ```
 
- 
+```
+sudo ./usertools/dpdk-devbind.py --force -b igb_uio 0000:00:03.0
+```
  
  
  
