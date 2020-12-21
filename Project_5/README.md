@@ -198,5 +198,14 @@ sudo ./tool/run.py -s mytest
 sudo ./tool/run.py mytest
 ```
 
- 
+```
+run = {
+        ...,
+        'plugin': '/usr/local/lib/x86_64-linux-gnu/',
+        ...
+}
+```
+
+
+
  
